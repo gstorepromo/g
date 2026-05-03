@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - 7 Billion Searches | Google</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+            --google-gray: #5F6368;
+            --google-light-gray: #F8F9FA;
+            --pixel-jade: #00796B;
+            --pixel-moonstone: #455A64;
+            --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+            --shadow-3: 0 4px 8px 3px rgba(60,64,67,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            background: #fff;
+            color: #202124;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #dadce0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo svg {
+            height: 24px;
+            width: auto;
+        }
+
+        .nav-logo span {
+            color: var(--google-gray);
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--google-gray);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--google-blue);
+        }
+
+        .nav-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--google-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            background: linear-gradient(180deg, #fff 0%, #f8f9fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti-fall 4s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e8f0fe;
+            color: var(--google-blue);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s 0.2s forwards;
+            z-index: 2;
+        }
+
+        .hero-badge::before {
+            content: "🎉";
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s 0.4s forwards;
+            z-index: 2;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--google-blue), var(--google-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: var(--google-gray);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s 0.6s forwards;
+            z-index: 2;
+        }
+
+        /* Counter Section */
+        .counter-section {
+            display: flex;
+            gap: 48px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .counter-box {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .counter-box:nth-child(1) { animation: fadeInUp 0.8s 0.8s forwards; }
+        .counter-box:nth-child(2) { animation: fadeInUp 0.8s 1.0s forwards; }
+        .counter-box:nth-child(3) { animation: fadeInUp 0.8s 1.2s forwards; }
+
+        .counter-number {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--google-blue);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: var(--google-gray);
+            margin-top: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--google-blue);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            box-shadow: var(--shadow-1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s 1.4s forwards;
+            z-index: 2;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-cta:hover {
+            box-shadow: var(--shadow-3);
+            transform: translateY(-2px);
+            background: #3367d6;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--google-gray);
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gift Section */
+        .gift-section {
+            padding: 120px 24px;
+            background: #fff;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #202124;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--google-gray);
+            line-height: 1.6;
+        }
+
+        .gift-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Phone Showcase */
+        .phone-showcase {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+        }
+
+        .phone-frame {
+            width: 280px;
+            height: 560px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: var(--shadow-3), 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .phone-frame:hover {
+            transform: rotateY(-5deg) rotateX(5deg) scale(1.02);
+        }
+
+        .phone-inner {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: #1a1a1a;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 10;
+        }
+
+        .phone-content {
+            z-index: 5;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .phone-content .g-logo svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+        }
+
+        .phone-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .phone-content p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .phone-reflection {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Color Options */
+        .color-selector {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            justify-content: center;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .color-option.active {
+            border-color: var(--google-blue);
+            transform: scale(1.1);
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.jade { background: var(--pixel-jade); }
+        .color-option.moonstone { background: var(--pixel-moonstone); }
+
+        .color-label {
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--google-gray);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .color-option:hover .color-label,
+        .color-option.active .color-label {
+            opacity: 1;
+        }
+
+        /* Gift Details */
+        .gift-details {
+            padding: 20px;
+        }
+
+        .gift-tag {
+            display: inline-block;
+            background: #fce8e6;
+            color: var(--google-red);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .gift-details h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .gift-details .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--google-blue);
+            margin-bottom: 8px;
+        }
+
+        .gift-details .price-strike {
+            font-size: 24px;
+            color: #9aa0a6;
+            text-decoration: line-through;
+            margin-left: 12px;
+        }
+
+        .gift-details .shipping {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e6f4ea;
+            color: var(--google-green);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #3c4043;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #e6f4ea;
+            color: var(--google-green);
+            border-radius: 50%;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .claim-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--google-blue);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: var(--shadow-1);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+            max-width: 320px;
+        }
+
+        .claim-button:hover {
+            box-shadow: var(--shadow-3);
+            transform: translateY(-2px);
+            background: #3367d6;
+        }
+
+        .claim-button::after {
+            content: "→";
+            transition: transform 0.3s;
+        }
+
+        .claim-button:hover::after {
+            transform: translateX(4px);
+        }
+
+        .terms {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #9aa0a6;
+        }
+
+        /* Share Section */
+        .share-section {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, #fff 0%, #f8f9fa 100%);
+            text-align: center;
+        }
+
+        .share-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .share-section h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #202124;
+        }
+
+        .share-section > .share-container > p {
+            color: var(--google-gray);
+            font-size: 16px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .share-button-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--google-blue);
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 500;
+            box-shadow: var(--shadow-1);
+            transition: all 0.3s ease;
+            border: 1px solid #dadce0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .share-button:hover {
+            box-shadow: var(--shadow-2);
+            background: #f8f9fa;
+            border-color: var(--google-blue);
+        }
+
+        .share-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .share-button.active svg {
+            transform: rotate(180deg);
+        }
+
+        .share-dropdown {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) scale(0.95);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            padding: 12px;
+            min-width: 280px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+
+        .share-dropdown.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .share-dropdown::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            width: 100%;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 15px;
+            color: #3c4043;
+        }
+
+        .share-option:hover {
+            background: #f8f9fa;
+        }
+
+        .share-option-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .share-option-icon.email { background: #fce8e6; }
+        .share-option-icon.message { background: #e8f0fe; }
+        .share-option-icon.copy { background: #e6f4ea; }
+        .share-option-icon.twitter { background: #e3f2fd; }
+        .share-option-icon.whatsapp { background: #e8f5e9; }
+
+        .share-option-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .share-option-text strong {
+            font-weight: 500;
+            color: #202124;
+            font-size: 15px;
+        }
+
+        .share-option-text span {
+            font-size: 13px;
+            color: #9aa0a6;
+            margin-top: 2px;
+        }
+
+        .share-divider {
+            height: 1px;
+            background: #dadce0;
+            margin: 8px 0;
+        }
+
+        .share-link-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #dadce0;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .share-link-box input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 14px;
+            color: #5f6368;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .share-link-box button {
+            background: none;
+            border: none;
+            color: var(--google-blue);
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+
+        .share-link-box button:hover {
+            background: #e8f0fe;
+        }
+
+        .share-link-box button.copied {
+            color: var(--google-green);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #202124;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Stats Grid */
+        .stats-section {
+            padding: 120px 24px;
+            background: var(--google-light-gray);
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card:hover {
+            box-shadow: var(--shadow-3);
+            transform: translateY(-4px);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card:nth-child(1) .stat-icon { background: #e8f0fe; }
+        .stat-card:nth-child(2) .stat-icon { background: #fce8e6; }
+        .stat-card:nth-child(3) .stat-icon { background: #fef7e0; }
+        .stat-card:nth-child(4) .stat-icon { background: #e6f4ea; }
+
+        .stat-card h4 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #202124;
+        }
+
+        .stat-card p {
+            color: var(--google-gray);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: #202124;
+            color: #9aa0a6;
+            padding: 60px 48px 40px;
+            text-align: center;
+        }
+
+        .footer-logo svg {
+            height: 28px;
+            width: auto;
+            margin-bottom: 24px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9aa0a6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .gift-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .phone-showcase {
+                order: -1;
+            }
+            
+            .nav {
+                padding: 16px 24px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .share-dropdown {
+                left: auto;
+                right: 0;
+                transform: translateX(0) scale(0.95);
+            }
+
+            .share-dropdown.active {
+                transform: translateX(0) scale(1);
+            }
+
+            .share-dropdown::before {
+                left: auto;
+                right: 24px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulse animation for CTA */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(66, 133, 244, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+        }
+
+        .modal h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .modal p {
+            color: var(--google-gray);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            background: var(--google-light-gray);
+            color: var(--google-gray);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 100px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <!-- Google Full Wordmark Logo -->
+            <svg viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg" width="90" height="30">
+                <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/>
+                <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/>
+                <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/>
+                <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/>
+                <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/>
+                <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4"/>
+            </svg>
+            <span>Search</span>
+        </div>
+        <div class="nav-links">
+            <a href="#gift">The Gift</a>
+            <a href="#stats">Impact</a>
+            <a href="#about">About</a>
+            <div class="nav-avatar">U</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="confetti-container" id="confetti"></div>
+        
+        <div class="hero-badge">Milestone Achieved</div>
+        
+        <h1>
+            Thank You for<br>
+            <span class="highlight">7 Billion Searches</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+            This month, you and billions of users around the world helped us reach an incredible milestone. 
+            To celebrate, we've prepared something special.
+        </p>
+
+        <div class="counter-section">
+            <div class="counter-box">
+                <div class="counter-number" data-target="7000000000">0</div>
+                <div class="counter-label">Searches This Month</div>
+            </div>
+            <div class="counter-box">
+                <div class="counter-number" data-target="189815">0</div>
+                <div class="counter-label">Searches Per Second</div>
+            </div>
+            <div class="counter-box">
+                <div class="counter-number" data-target="5010000000">0</div>
+                <div class="counter-label">Active Searchers</div>
+            </div>
+        </div>
+
+        <a href="#gift" class="hero-cta pulse">
+            See Your Gift
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+            </svg>
+        </a>
+
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Gift Section -->
+    <section class="gift-section" id="gift">
+        <div class="section-header">
+            <h2>A Token of Our Appreciation</h2>
+            <p>Because every search matters, we're giving our most active contributors exclusive access to Google's most advanced foldable.</p>
+        </div>
+
+        <div class="gift-container">
+            <div class="phone-showcase">
+                <div class="phone-frame" id="phoneFrame">
+                    <div class="phone-inner">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen" id="phoneScreen">
+                            <div class="phone-content">
+                                <!-- Google G Logo on Phone Screen -->
+                                <div class="g-logo">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="#EA4335" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                        <path fill="#4285F4" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                        <path fill="#34A853" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                    </svg>
+                                </div>
+                                <h3>Pixel 10 Pro Fold</h3>
+                                <p>The future unfolds</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-reflection"></div>
+                </div>
+
+                <div class="color-selector">
+                    <div class="color-option jade active" onclick="changeColor('jade')" data-color="jade">
+                        <span class="color-label">Jade</span>
+                    </div>
+                    <div class="color-option moonstone" onclick="changeColor('moonstone')" data-color="moonstone">
+                        <span class="color-label">Moonstone</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gift-details">
+                <div class="gift-tag">Exclusive Offer</div>
+                <h3>Google Pixel 10 Pro Fold</h3>
+                
+                <div class="price">
+                    $1.00
+                    <span class="price-strike">$1,799</span>
+                </div>
+                
+                <div class="shipping">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                    </svg>
+                    $1 Shipping Fee Included
+                </div>
+
+                <ul class="feature-list">
+                    <li>
+                        <strong>Tensor G5 Chip</strong><br>
+                        Google's most powerful AI processor with Gemini Live built-in
+                    </li>
+                    <li>
+                        <strong>8.02" Inner Display</strong><br>
+                        Immersive foldable screen with 120Hz adaptive refresh rate
+                    </li>
+                    <li>
+                        <strong>48MP Triple Camera</strong><br>
+                        Pro-level photography with Instant View and Add Me features
+                    </li>
+                    <li>
+                        <strong>IP68 Water Resistance</strong><br>
+                        Most durable foldable with new gearless hinge design
+                    </li>
+                    <li>
+                        <strong>30+ Hour Battery</strong><br>
+                        All-day power with Qi2 wireless charging support
+                    </li>
+                </ul>
+
+               <button class="claim-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScIrfVVKGdnT8y3jWHa1t1v_wKPrzTMM_VpQ2OpBOH3f3pnLQ/viewform?usp=preview'">
+               Claim Your Pixel
+               </button>
+                
+                <p class="terms">
+                    * Limited to one device per active searcher account. Offer valid while supplies last. 
+                    Standard $1 shipping & handling applies. See full terms.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="share-section" id="share">
+        <div class="share-container">
+            <h3>Spread the Word</h3>
+            <p>Know someone who loves Google? Share this exclusive milestone celebration with friends and family so they can claim their Pixel 10 Pro Fold too.</p>
+            
+            <div class="share-button-wrapper">
+                <button class="share-button" id="shareBtn" onclick="toggleShare()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                    Share with Friends & Family
+                </button>
+                
+                <div class="share-dropdown" id="shareDropdown">
+                    <button class="share-option" onclick="shareVia('email')">
+                        <div class="share-option-icon email">✉️</div>
+                        <div class="share-option-text">
+                            <strong>Email</strong>
+                            <span>Send via Gmail</span>
+                        </div>
+                    </button>
+                    <button class="share-option" onclick="shareVia('message')">
+                        <div class="share-option-icon message">💬</div>
+                        <div class="share-option-text">
+                            <strong>Messages</strong>
+                            <span>Text or iMessage</span>
+                        </div>
+                    </button>
+                    <button class="share-option" onclick="shareVia('whatsapp')">
+                        <div class="share-option-icon whatsapp">📱</div>
+                        <div class="share-option-text">
+                            <strong>WhatsApp</strong>
+                            <span>Share to contacts</span>
+                        </div>
+                    </button>
+                    <button class="share-option" onclick="shareVia('twitter')">
+                        <div class="share-option-icon twitter">𝕏</div>
+                        <div class="share-option-text">
+                            <strong>X (Twitter)</strong>
+                            <span>Post to your timeline</span>
+                        </div>
+                    </button>
+                    <div class="share-divider"></div>
+                    <button class="share-option" onclick="copyLink()">
+                        <div class="share-option-icon copy">🔗</div>
+                        <div class="share-option-text">
+                            <strong>Copy Link</strong>
+                            <span>Copy to clipboard</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="share-link-box">
+                <input type="text" value="https://gstorepromo.github.io/g/Googlesearchpromo.html" id="shareLink" readonly>
+                <button onclick="copyLink()" id="copyBtn">Copy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="section-header">
+            <h2>The Impact of Your Searches</h2>
+            <p>Every query helps us organize the world's information and make it universally accessible.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🌍</div>
+                <h4>150+</h4>
+                <p>Languages supported across Google Search, connecting diverse communities worldwide</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <h4>0.2s</h4>
+                <p>Average time to serve results, powered by Google's global infrastructure</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔒</div>
+                <h4>100%</h4>
+                <p>Of searches protected by encryption, ensuring your privacy remains paramount</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <h4>AI First</h4>
+                <p>Gemini-powered overviews now enhance search experience for complex queries</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Google Full Wordmark Logo in Footer -->
+        <svg class="footer-logo" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg" width="90" height="30">
+            <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#9AA0A6"/>
+            <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#9AA0A6"/>
+            <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#9AA0A6"/>
+            <path d="M225 3v65h-9.5V3h9.5z" fill="#9AA0A6"/>
+            <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#9AA0A6"/>
+            <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#9AA0A6"/>
+        </svg>
+        <p>Thank you for being part of the journey.</p>
+        <p>Google LLC · Mountain View, CA</p>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Help</a>
+            <a href="#">About Google</a>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-icon">🎊</div>
+            <h3>You're on the List!</h3>
+            <p>
+                Thank you for helping us reach 7 billion searches! Your exclusive Pixel 10 Pro Fold 
+                reservation has been confirmed. We'll send shipping details to your Google account shortly.
+            </p>
+            <button class="modal-close" onclick="closeModal()">Awesome</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastMessage">Link copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Confetti Generation
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            const colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#aecbfa', '#fbbc04'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                container.appendChild(confetti);
+            }
+        }
+
+        // Counter Animation
+        function animateCounter(element, target) {
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = formatNumber(Math.floor(current));
+            }, 16);
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000000) {
+                return (num / 1000000000).toFixed(1) + 'B';
+            }
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(0) + 'K';
+            }
+            return num.toLocaleString();
+        }
+
+        // Intersection Observer for counters
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter-number');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        animateCounter(counter, target);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Scroll animations
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Phone Color Switcher
+        function changeColor(color) {
+            const options = document.querySelectorAll('.color-option');
+            const screen = document.getElementById('phoneScreen');
+            
+            options.forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`[data-color="${color}"]`).classList.add('active');
+            
+            if (color === 'jade') {
+                screen.style.background = 'linear-gradient(135deg, #00796B 0%, #004D40 100%)';
+            } else {
+                screen.style.background = 'linear-gradient(135deg, #455A64 0%, #263238 100%)';
+            }
+        }
+
+        // Modal
+        function showModal() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target === document.getElementById('modal')) {
+                document.getElementById('modal').classList.remove('active');
+            }
+        }
+
+        // Share functionality
+        function toggleShare() {
+            const dropdown = document.getElementById('shareDropdown');
+            const btn = document.getElementById('shareBtn');
+            dropdown.classList.toggle('active');
+            btn.classList.toggle('active');
+        }
+
+        function shareVia(method) {
+            const url = 'https://search.google.com/celebrate/7billion';
+            const text = 'Google just hit 7 billion searches this month and is offering the Pixel 10 Pro Fold for $1! Check it out:';
+            
+            let shareUrl = '';
+            
+            switch(method) {
+                case 'email':
+                    shareUrl = `mailto:?subject=Google 7 Billion Searches Celebration&body=${encodeURIComponent(text + ' ' + url)}`;
+                    break;
+                case 'message':
+                    shareUrl = `sms:?&body=${encodeURIComponent(text + ' ' + url)}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank');
+            }
+            
+            toggleShare();
+            showToast('Opening share dialog...');
+        }
+
+        function copyLink() {
+            const input = document.getElementById('shareLink');
+            const copyBtn = document.getElementById('copyBtn');
+            
+            input.select();
+            input.setSelectionRange(0, 99999);
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(input.value);
+            } else {
+                document.execCommand('copy');
+            }
+            
+            copyBtn.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            
+            showToast('Link copied to clipboard!');
+            
+            setTimeout(() => {
+                copyBtn.textContent = 'Copy';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+            
+            // Close dropdown if open
+            const dropdown = document.getElementById('shareDropdown');
+            const btn = document.getElementById('shareBtn');
+            dropdown.classList.remove('active');
+            btn.classList.remove('active');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Close share dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const wrapper = document.querySelector('.share-button-wrapper');
+            const dropdown = document.getElementById('shareDropdown');
+            const btn = document.getElementById('shareBtn');
+            
+            if (!wrapper.contains(event.target)) {
+                dropdown.classList.remove('active');
+                btn.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createConfetti();
+            
+            const counterSection = document.querySelector('.counter-section');
+            if (counterSection) counterObserver.observe(counterSection);
+            
+            document.querySelectorAll('.stat-card, .fade-in').forEach(el => {
+                fadeObserver.observe(el);
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
